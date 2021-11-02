@@ -1,4 +1,4 @@
-<h1>MMM-SmartTouch</h1>
+<h1>MMM-SmartMirror</h1>
 <i>Builds off of a touchscreen interface project by <a href="https://smartbuilds.io">SmartBuilds.io</a>, created by <a href="https://github.com/EbenKouao/MMM-SmartTouch">EbenKouao</a></i>
 
 <h1>Step 1 – Install the module</h1>
