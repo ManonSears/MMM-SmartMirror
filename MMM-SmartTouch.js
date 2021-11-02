@@ -114,7 +114,7 @@ Module.register("MMM-SmartTouch", {
     const birdButtonItem = document.createElement("li");
     birdButtonItem.innerHTML = "<span class='fa fa-twitter fa-3x'></span>"
         + "<br>" + this.translate('BIRD');
-    birdtButtonItem.className = "li-t"
+    birdButtonItem.className = "li-t"
 
     // Send bird notification when clicked
     birdButtonItem.addEventListener("click",
