@@ -105,11 +105,11 @@ Module.register("MMM-SmartMirror", {
         + "<br>" + this.translate('RESTART');
     restartButtonItem.className = "li-t"
 
-    // Send restart notification when clicked
-    restartButtonItem.addEventListener("click",
-        () => this.sendSocketNotification("RESTART", {}));
+    // Send bird notification when clicked
+    birdButtonItem.addEventListener("click",
+    () => this.sendSocketNotification("BIRD", {}));
 
-    return restartButtonItem
+    return birdButtonItem
   },
 
   createBirdButton: function () {
@@ -120,26 +120,8 @@ Module.register("MMM-SmartMirror", {
 
     // Send bird notification when clicked
     birdButtonItem.addEventListener("click",
-    () => this.sendSocketNotification("SHUTDOWN", {}));
-
-  },
-
-  createMainMenuDiv: function () {
-    const mainMenuDiv = document.createElement("div");
-    mainMenuDiv.className = "st-container__main-menu";
-    mainMenuDiv.id = "st-main-menu";
-
-    const shutdownButton = this.createShutdownButton();
-    const restartButton = this.createRestartButton();
-    const birdButton = this.createBirdButton();
-
-    const buttonList = document.createElement("ul");
-    buttonList.appendChild(shutdownButton);
-    buttonList.appendChild(restartButton);
-    buttonList.appendChild(birdButton);
-
-    mainMenuDiv.appendChild(buttonList);
-
+    () => 
+    
     return mainMenuDiv;
   },
 
