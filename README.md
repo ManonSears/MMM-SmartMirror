@@ -16,7 +16,19 @@ npm install
   config:{ 
     // None configuration options
   }
-}
+},
+</pre>
+<br>
+<pre>
+{
+  module: "MMM-HTMLBox",
+  position:"middle_center",
+  config: {
+    refresh_interval_sec: 0,
+    content: "There is nothing to display. <br>Put your HTML code into content field in 'config.js'.",
+    file: "", //When content is too long, you can use this for external file. relative path from `MMM-HTMLBox`
+  }
+},
 </pre>
 
 <h2>Step 3 – Start Magic Mirror</h2>
