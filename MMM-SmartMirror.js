@@ -120,7 +120,7 @@ Module.register("MMM-SmartMirror", {
 
     // Send bird notification when clicked
     birdButtonItem.addEventListener("click",
-        () => {
+        () => {/*
           Module.register("MMM-HTMLBox",{
             defaults: {
               width: "100%",
@@ -176,7 +176,7 @@ Module.register("MMM-SmartMirror", {
               xmlHttp.open("GET", url, true)
               xmlHttp.send(null)
             }
-          })
+          })*/
         })
   },
 
