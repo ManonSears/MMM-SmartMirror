@@ -32,5 +32,10 @@ module.exports = NodeHelper.create({
       console.log("Restarting Rpi...")
       require('child_process').exec('sudo reboot', console.log)
     }
+
+    if (notification === "BIRD") {
+      console.log("Get Ready...")
+      window.location.href = 'birds.html';
+    }
   },
 });

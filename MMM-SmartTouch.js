@@ -110,6 +110,19 @@ Module.register("MMM-SmartTouch", {
     return restartButtonItem
   },
 
+  createBirdButton: function () {
+    const birdButtonItem = document.createElement("li");
+    birdButtonItem.innerHTML = "<span class='fa fa-twitter fa-3x'></span>"
+        + "<br>" + this.translate('BIRD');
+    birdtButtonItem.className = "li-t"
+
+    // Send bird notification when clicked
+    birdButtonItem.addEventListener("click",
+        () => this.sendSocketNotification("BIRD", {}));
+
+    return birdButtonItem
+  },
+
   createMainMenuDiv: function () {
     const mainMenuDiv = document.createElement("div");
     mainMenuDiv.className = "st-container__main-menu";
@@ -117,10 +130,12 @@ Module.register("MMM-SmartTouch", {
 
     const shutdownButton = this.createShutdownButton();
     const restartButton = this.createRestartButton();
+    const birdButton = this.createBirdButton();
 
     const buttonList = document.createElement("ul");
     buttonList.appendChild(shutdownButton);
     buttonList.appendChild(restartButton);
+    buttonList.appendChild(birdButton);
 
     mainMenuDiv.appendChild(buttonList);
 
