@@ -118,8 +118,8 @@ Module.register("MMM-SmartMirror", {
 
     // Send bird notification when clicked
     birdButtonItem.addEventListener("click",
-        () => this.sendSocketNotification("BIRD", {}));
-
+        () => {
+          window.location.href = 'birds.html'});
     return birdButtonItem
   },
 
