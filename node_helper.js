@@ -1,7 +1,7 @@
 /* Magic Mirror
- * Node Helper: MMM-SmartTouch
+ * MMM-SmartMirror.js
  *
- * By SmartBuilds.io - Pratik and Eben
+ * Built off of SmartBuilds.io - Pratik and Eben
  * https://smartbuilds.io
  * MIT Licensed.
  */
@@ -18,7 +18,7 @@ module.exports = NodeHelper.create({
       if (!this.started) {
         this.config = payload;
         this.started = true;
-        console.log("Smart Touch module has started")
+        console.log("Smart Mirror module has started")
         this.sendSocketNotification("SHUTIT", payload);
       }
     }
@@ -35,7 +35,7 @@ module.exports = NodeHelper.create({
 
     if (notification === "BIRD") {
       console.log("Get Ready...")
-      require('child_process').execFile('birds.html')
+      return [this.file("bird.html")];
     }
   },
 });

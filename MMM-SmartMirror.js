@@ -1,12 +1,12 @@
 /* Magic Mirror
- * MMM-SmartTouch.js
+ * MMM-SmartMirror.js
  *
- * By SmartBuilds.io - Pratik and Eben
+ * Built off of SmartBuilds.io - Pratik and Eben
  * https://smartbuilds.io
  * MIT Licensed.
  */
 
-Module.register("MMM-SmartTouch", {
+Module.register("MMM-SmartMirror", {
   defaults: {
   },
 
@@ -16,7 +16,7 @@ Module.register("MMM-SmartTouch", {
   },
 
   getStyles: function () {
-    return [this.file("css/mmm-smarttouch.css"), "font-awesome.css"];
+    return [this.file("css/mmm-smartmirror.css"), "font-awesome.css"];
   },
 
   // Load translations files
