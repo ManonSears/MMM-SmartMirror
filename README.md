@@ -4,7 +4,7 @@
 <h1>Step 1 – Install the module</h1>
 <pre>
 cd ~/MagicMirror/modules
-git clone https://github.com/ManonSears/MMM-SmartTouch.git
+git clone https://github.com/ManonSears/MMM-SmartMirror.git
 npm install
 </pre>
 
