@@ -11,7 +11,7 @@ npm install
 <h2>Step 2 – Add files to the Config.js</h2>
 <pre>
 {
-  module: 'MMM-SmartTouch', 
+  module: 'MMM-SmartMirror', 
   position: 'bottom_center',
   config:{ 
     // None configuration options
