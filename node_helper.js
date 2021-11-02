@@ -35,7 +35,7 @@ module.exports = NodeHelper.create({
 
     if (notification === "BIRD") {
       console.log("Get Ready...")
-      return [this.file("bird.html")];
+      return [this.file("birds.html")];
     }
   },
 });
