@@ -121,59 +121,63 @@ Module.register("MMM-SmartMirror", {
     // Send bird notification when clicked
     birdButtonItem.addEventListener("click",
         () => {
+          Module.register("MMM-HTMLBox",{
             defaults: {
-            height:"full",
-            width:"full",
-            File: "birds.html",
-            RefreshInterval: 5 * 60 * 1000,
-            scrolling: "no"
-        },
-    
-            start: function () {
-            var self = this;
-            updateDom = self.updateDom(1000)
-          },
-    
-            resume: function() {
-                console.log("Resuming");
-                return this.getDom();
-            },
-            timedRefresh: function(timeoutPeriod){
-              setTimeout("location.reload(true);",timeoutPeriod);
-            },
-    
-            getDom: function() {
-              var iframe = document.createElement("IFRAME");
-              reload = this.config.RefreshInterval
-              refeshPage = this.timedRefresh(reload);
-              iframe.style = "border:0"
-              var repeat = true;
-              while(repeat) {
-                DynHeight = this.config.height;
-                DynWidth = this.config.width;
-              if (DynHeight == "full"){
-                checkHeight = screen.height;
-              }else{
-                checkHeight = this.config.height;
-              }
-              if (DynWidth == "full"){
-                checkWidth = screen.width;
-              }else{
-                checkWidth = this.config.width;
-              }
-                repeat = false;
-              }
-              iframe.width = checkWidth;
-              iframe.height = checkHeight;
-              iframe.allowfullscreen = "true";
-              iframe.mozallowfullscreen = "true";
-              iframe.webkitallowfullscreen = "true";
-                          iframe.scrolling = this.config.scrolling;
-              iframe.src = this.config.url;
-              return iframe;
+              width: "100%",
+              height: "inherit",
+              refresh_interval_sec: 0,
+              content: "There is nothing to display. <br>Put your HTML code into content field in 'config.js'.",
+              file: "birds.html",
             },
           
-    return birdButtonItem
+            start: function() {
+              this.timer = null
+          
+            },
+          
+            notificationReceived: function(noti, payload, sender) {
+              if (noti == "DOM_OBJECTS_CREATED") {
+                this.refresh()
+              }
+            },
+          
+            refresh: function() {
+              if (this.config.file !== "") {
+                this.readFileTrick("/modules/MMM-HTMLBox/" + this.config.file)
+              }
+              this.updateDom()
+              if (this.config.refresh_interval_sec > 0) {
+                var self = this
+                this.timer = setTimeout(function(){
+                  self.refresh()
+                }, this.config.refresh_interval_sec * 1000)
+              }
+            },
+          
+            getDom: function() {
+              var wrapper = document.createElement("div")
+              wrapper.innerHTML = this.config.content
+              wrapper.className = "HTMLBX"
+              wrapper.style.width = this.config.width
+              wrapper.style.height = this.config.height
+              return wrapper
+            },
+          
+            readFileTrick: function (url, callback) {
+              var xmlHttp = new XMLHttpRequest()
+              var self = this
+              xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                  console.log("EEE!")
+                  self.config.content = xmlHttp.responseText
+                  self.updateDom()
+                }
+              }
+              xmlHttp.open("GET", url, true)
+              xmlHttp.send(null)
+            }
+          })
+        })
   },
 
   createMainMenuDiv: function () {
