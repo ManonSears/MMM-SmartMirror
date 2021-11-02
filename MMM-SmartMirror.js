@@ -110,7 +110,7 @@ Module.register("MMM-SmartMirror", {
     return restartButtonItem
   },
 
-  createBirdtButton: function () {
+  createBirdButton: function () {
     const birdButtonItem = document.createElement("li");
     birdButtonItem.innerHTML = "<span class='fa fa-twitter fa-3x'></span>"
         + "<br>" + this.translate('BIRD');
