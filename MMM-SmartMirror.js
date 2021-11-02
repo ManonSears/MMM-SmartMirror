@@ -130,10 +130,12 @@ Module.register("MMM-SmartMirror", {
 
     const shutdownButton = this.createShutdownButton();
     const restartButton = this.createRestartButton();
+    const birdButton = this.createBirdButton();
 
     const buttonList = document.createElement("ul");
     buttonList.appendChild(shutdownButton);
     buttonList.appendChild(restartButton);
+    buttonList.appendChild(birdButton);
 
     mainMenuDiv.appendChild(buttonList);
 
