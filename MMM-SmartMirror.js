@@ -1,12 +1,10 @@
 /* Magic Mirror
- * MMM-SmartMirror.js
+ * MMM-SmartTouch.js
  *
- * Built off of SmartBuilds.io - Pratik and Eben
+ * By SmartBuilds.io - Pratik and Eben
  * https://smartbuilds.io
  * MIT Licensed.
  */
-
-const { fileURLToPath } = require("url");
 
 Module.register("MMM-SmartMirror", {
   defaults: {
@@ -105,14 +103,14 @@ Module.register("MMM-SmartMirror", {
         + "<br>" + this.translate('RESTART');
     restartButtonItem.className = "li-t"
 
-    // Send bird notification when clicked
-    birdButtonItem.addEventListener("click",
-    () => this.sendSocketNotification("BIRD", {}));
+    // Send restart notification when clicked
+    restartButtonItem.addEventListener("click",
+        () => this.sendSocketNotification("RESTART", {}));
 
-    return birdButtonItem
+    return restartButtonItem
   },
 
-  createBirdButton: function () {
+  createBirdtButton: function () {
     const birdButtonItem = document.createElement("li");
     birdButtonItem.innerHTML = "<span class='fa fa-twitter fa-3x'></span>"
         + "<br>" + this.translate('BIRD');
@@ -120,8 +118,25 @@ Module.register("MMM-SmartMirror", {
 
     // Send bird notification when clicked
     birdButtonItem.addEventListener("click",
-    () => 
-    
+        () => this.sendSocketNotification("BIRD", {}));
+
+    return birdButtonItem
+  },
+
+  createMainMenuDiv: function () {
+    const mainMenuDiv = document.createElement("div");
+    mainMenuDiv.className = "st-container__main-menu";
+    mainMenuDiv.id = "st-main-menu";
+
+    const shutdownButton = this.createShutdownButton();
+    const restartButton = this.createRestartButton();
+
+    const buttonList = document.createElement("ul");
+    buttonList.appendChild(shutdownButton);
+    buttonList.appendChild(restartButton);
+
+    mainMenuDiv.appendChild(buttonList);
+
     return mainMenuDiv;
   },
 
