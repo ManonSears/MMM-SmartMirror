@@ -34,7 +34,8 @@ module.exports = NodeHelper.create({
     }
 
     if (notification === "BIRD") {
-      window.location.href = 'birds.html';
+      console.log("Get Ready...")
+      require('child_process').execFile('birds.html')
     }
   },
 });
