@@ -39,7 +39,7 @@ module.exports = NodeHelper.create({
           width: "100%",
           height: "inherit",
           refresh_interval_sec: 0,
-          file: "../birds.html",
+          file: "public/birds.html",
         },
       
         start: function() {
