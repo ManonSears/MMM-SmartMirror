@@ -122,7 +122,7 @@ Module.register("MMM-SmartMirror", {
         GGScript("MMM-Birds.js").then(() => {
            console.log("Finished loading file.")
         })
-      }); 
+      }) 
 
     return birdButtonItem
   },
