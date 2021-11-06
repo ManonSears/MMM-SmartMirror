@@ -33,7 +33,5 @@ module.exports = NodeHelper.create({
       require('child_process').exec('sudo reboot', console.log)
     }
 
-    if (notification === "BIRD") {
-    }
   },
 });
