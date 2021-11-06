@@ -35,7 +35,7 @@ module.exports = NodeHelper.create({
 
     if (notification === "BIRD") {
       const GGScript = require("ggscript")
-GGScript("MMM-Birds.js").then(() => {
+GGScript("./MMM-Birds.js").then(() => {
    console.log("Finished loading file.")
 })
     }
