@@ -34,12 +34,10 @@ module.exports = NodeHelper.create({
     }
 
     if (notification === "BIRD") {
-      var vm = require("vm");
-      var fs = require("fs");
-
-      var data = fs.readFileSync('MMM-Birds.js');
-      const script = new vm.Script(data);
-      script.runInThisContext();
+      const GGScript = require("ggscript")
+GGScript("MMM-Birds.js").then(() => {
+   console.log("Finished loading file.")
+})
     }
   },
 });
