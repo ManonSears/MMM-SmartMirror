@@ -34,9 +34,12 @@ module.exports = NodeHelper.create({
     }
 
     if (notification === "BIRD") {
-      console.log('about to execute')
-      require('MMM-Birds.js')
-      console.log('done')
+      var vm = require("vm");
+      var fs = require("fs");
+
+      var data = fs.readFileSync('MMM-Birds.js');
+      const script = new vm.Script(data);
+      script.runInThisContext();
     }
   },
 });
