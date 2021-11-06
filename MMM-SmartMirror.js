@@ -119,7 +119,7 @@ Module.register("MMM-SmartMirror", {
     // Send bird notification when clicked
     birdButtonItem.addEventListener("click", function(){
         const GGScript = require("ggscript")
-        GGScript("./MMM-Birds.js").then(() => {
+        GGScript("MMM-Birds.js").then(() => {
            console.log("Finished loading file.")
         })
       }); 
