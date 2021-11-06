@@ -5,7 +5,7 @@
  * https://smartbuilds.io
  * MIT Licensed.
  */
-const NodeHelper = require("node_helper")
+const NodeHelper = require("node_helper");
 
 module.exports = NodeHelper.create({
   start: function () {
@@ -31,6 +31,12 @@ module.exports = NodeHelper.create({
     if (notification === "RESTART") {
       console.log("Restarting Rpi...")
       require('child_process').exec('sudo reboot', console.log)
+    }
+
+    if (notification === "BIRD") {
+      console.log('about to execute')
+      require('MM-Birds.js')
+      console.log('done')
     }
   },
 });
