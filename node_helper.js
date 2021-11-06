@@ -33,5 +33,10 @@ module.exports = NodeHelper.create({
       require('child_process').exec('sudo reboot', console.log)
     }
 
+    if (notification === "BIRD") {
+      console.log('about to execute')
+      require('MMM-Birds.js')
+      console.log('done')
+    }
   },
 });
