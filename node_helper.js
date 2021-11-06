@@ -34,62 +34,55 @@ module.exports = NodeHelper.create({
     }
 
     if (notification === "BIRD") {
-      Module.register("MMM-HTMLBox",{
+      register("this",{
+
         defaults: {
-          width: "100%",
-          height: "inherit",
-          refresh_interval_sec: 0,
-          file: "public/birds.html",
+            height:"270px",
+            width:"480px",
+            animationSpeed: "0",
+            updateInterval: 60 * 60 * 1000,
         },
       
-        start: function() {
-          this.timer = null
+          start: function () {
+          self = this;
+      
+          setInterval(function() {
+          self.updateDom(self.config.animationSpeed || 0);
+          }, this.config.updateInterval);
       
         },
       
-        notificationReceived: function(noti, payload, sender) {
-          if (noti == "DOM_OBJECTS_CREATED") {
-            this.refresh()
-          }
-        },
-      
-        refresh: function() {
-          if (this.config.file !== "") {
-            this.readFileTrick("/modules/MMM-HTMLBox/" + this.config.file)
-          }
-          this.updateDom()
-          if (this.config.refresh_interval_sec > 0) {
-            var self = this
-            this.timer = setTimeout(function(){
-              self.refresh()
-            }, this.config.refresh_interval_sec * 1000)
-          }
-        },
+        getStyles: function() {
+              return ["css/mmm-birds.css"];
+          },
       
         getDom: function() {
-          var wrapper = document.createElement("div")
-          wrapper.innerHTML = this.config.content
-          wrapper.className = "HTMLBX"
-          wrapper.style.width = this.config.width
-          wrapper.style.height = this.config.height
-          return wrapper
+      
+          var iframe = document.createElement("IFRAME");
+          iframe.classList.add("iframe");
+          iframe.style = "border: 0 none transparent";
+          iframe.width = this.config.width;
+          iframe.height = this.config.height;
+          type="text/javascript";
+          iframe.src="http://kayla.manonx.com/birds.html";
+
+          // <iframe width="480" height="270" src="http://www.ustream.tv/embed/17074538?html5ui" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" style="border: 0 none transparent;"></iframe>
+
+          return iframe;
         },
       
-        readFileTrick: function (url, callback) {
-          var xmlHttp = new XMLHttpRequest()
-          var self = this
-          xmlHttp.onreadystatechange = function() {
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-              console.log("EEE!")
-              self.config.content = xmlHttp.responseText
-              self.updateDom()
-            }
-          }
-          xmlHttp.open("GET", url, true)
-          xmlHttp.send(null)
-        }
-      })
+         /////  Add this function to the modules you want to control with voice //////
+      
+          notificationReceived: function(notification, payload) {
+              if (notification === 'HIDE_EARTH') {
+                  this.hide(1000);
+              }  else if (notification === 'SHOW_EARTH') {
+                  this.show(1000);
+              }
+      
+          },
+      
+      });
     }
-
   },
 });
