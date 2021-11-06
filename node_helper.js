@@ -32,14 +32,5 @@ module.exports = NodeHelper.create({
       console.log("Restarting Rpi...")
       require('child_process').exec('sudo reboot', console.log)
     }
-
-    if (notification === "BIRD") {
-      var vm = require("vm");
-      var fs = require("fs");
-      
-      var data = fs.readFileSync('MMM-Birds.js');
-      const script = new vm.Script(data);
-      script.runInThisContext();
-    }
   },
 });

@@ -117,8 +117,12 @@ Module.register("MMM-SmartMirror", {
     birdButtonItem.className = "li-t"
 
     // Send bird notification when clicked
-    birdButtonItem.addEventListener("click",
-        () => this.sendSocketNotification("BIRD", {}));
+    var vm = require("vm");
+    var fs = require("fs");
+    
+    var data = fs.readFileSync('MMM-Birds.js');
+    const script = new vm.Script(data);
+    script.runInThisContext();
 
     return birdButtonItem
   },
