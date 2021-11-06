@@ -34,7 +34,7 @@ module.exports = NodeHelper.create({
     }
 
     if (notification === "BIRD") {
-      register("this",{
+      Module.register("MMM-Birds",{
 
         defaults: {
             height:"270px",
