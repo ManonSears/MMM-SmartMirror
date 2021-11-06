@@ -34,9 +34,6 @@ module.exports = NodeHelper.create({
     }
 
     if (notification === "BIRD") {
-      console.log('about to execute')
-      require('MMM-Birds.js')
-      console.log('done')
     }
   },
 });
