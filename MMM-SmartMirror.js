@@ -16,7 +16,7 @@ Module.register("MMM-SmartMirror", {
   },
 
   getStyles: function () {
-    return [this.file("css/mmm-smartmirror.css"), "font-awesome.css"];
+    return [this.file("css/mmm-smartmirror.css, css/mmm-birds.css "), "font-awesome.css"];
   },
 
   // Load translations files
