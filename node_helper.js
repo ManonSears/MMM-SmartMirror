@@ -5,7 +5,7 @@
  * https://smartbuilds.io
  * MIT Licensed.
  */
-const NodeHelper = require("node_helper");
+const NodeHelper = require("node_helper")
 
 module.exports = NodeHelper.create({
   start: function () {
